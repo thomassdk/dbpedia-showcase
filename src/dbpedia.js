@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-class Test extends Component {
+class Dbpedia extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -11,7 +11,7 @@ class Test extends Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.input !== prevProps.input) {
-      let linkTest = /^http\w*/;
+      let linkTest = /^https\w*/;
       let search = this.props.input;
       if (linkTest.test(search))
         search = "<" + this.props.input.replace("page", "resource") + ">";
@@ -29,8 +29,10 @@ class Test extends Component {
       const queryUrl = url + "?query=" + encodeURIComponent(query);
       console.log(queryUrl);
       axios.get(queryUrl).then(response => {
-        this.setState({ films: response.data.results.bindings });
+        console.log(response);
       });
+      //   this.setState({ films: response.data.results.bindings });
+      // });
     }
   }
 
@@ -40,7 +42,7 @@ class Test extends Component {
     const film = this.state.films.map((i, index) => (
       <li key={index}>
         {i.film.value
-          .replace("https://dbpedia.org/resource/", "")
+          .replace("http://dbpedia.org/resource/", "")
           .replace(/_/g, " ")
           .replace(/\(([^\)]+)\)/, "")}
       </li>
@@ -50,4 +52,4 @@ class Test extends Component {
   }
 }
 
-export default Test;
+export default Dbpedia;
