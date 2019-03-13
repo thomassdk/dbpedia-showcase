@@ -37,8 +37,8 @@ class Test extends Component {
   render(props) {
     console.log(this.state.films);
 
-    const film = this.state.films.map(i => (
-      <li>
+    const film = this.state.films.map((i, index) => (
+      <li key={index}>
         {i.film.value
           .replace("https://dbpedia.org/resource/", "")
           .replace(/_/g, " ")
