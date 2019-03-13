@@ -29,10 +29,8 @@ class Dbpedia extends Component {
       const queryUrl = url + "?query=" + encodeURIComponent(query);
       console.log(queryUrl);
       axios.get(queryUrl).then(response => {
-        console.log(response);
+        this.setState({ films: response.data.results.bindings });
       });
-      //   this.setState({ films: response.data.results.bindings });
-      // });
     }
   }
 
