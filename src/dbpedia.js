@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
 
+const linkStyle = {
+  listStyleType: "none"
+};
+
 class Dbpedia extends Component {
   constructor(props) {
     super(props);
@@ -46,7 +50,7 @@ class Dbpedia extends Component {
       </li>
     ));
 
-    return <ul>{film}</ul>;
+    return <ul style={linkStyle}>{film}</ul>;
   }
 }
 
