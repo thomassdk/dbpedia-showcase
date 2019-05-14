@@ -13,6 +13,10 @@ class App extends Component {
   handleChange(event) {
     this.setState({
       input: event.target.value
+        .toLowerCase()
+        .split(" ")
+        .map(s => s.charAt(0).toUpperCase() + s.substring(1))
+        .join(" ")
     });
   }
 
@@ -24,7 +28,7 @@ class App extends Component {
           type="text"
           id="input"
           className="InputText"
-          placeholder="Input an Actor/Actress's DBPedia link or Name(Make sure the first letter of each name is capitalized)"
+          placeholder="Input an Actor/Actress's DBPedia link or just their name"
           value={this.input}
           onChange={this.handleChange}
         />

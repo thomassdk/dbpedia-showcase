@@ -16,7 +16,9 @@ class Dbpedia extends Component {
   componentDidUpdate(prevProps) {
     if (this.props.input !== prevProps.input) {
       let linkTest = /^https\w*/;
+
       let search = this.props.input;
+
       if (linkTest.test(search))
         search = "<" + this.props.input.replace("page", "resource") + ">";
       else search = "dbr:" + this.props.input.replace(" ", "_");
@@ -46,6 +48,7 @@ class Dbpedia extends Component {
         {i.film.value
           .replace("http://dbpedia.org/resource/", "")
           .replace(/_/g, " ")
+          // eslint-disable-next-line
           .replace(/\(([^\)]+)\)/, "")}
       </li>
     ));
